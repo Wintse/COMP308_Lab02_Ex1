@@ -17,18 +17,18 @@ function Links(props){
     return (
         <React.Fragment>
                 <Link to="/" className="navbar-brand">
-                    Movies management
+                    Students management
                 </Link>
                 <Collapse>
                     <List>
                         <Item>
-                            <Link to="/movies/list" className="nav-link">
-                                List Movies
+                            <Link to="/students/list" className="nav-link">
+                                List Students
                             </Link>
                         </Item>
                         <Item>
-                            <Link to="/movies/create" className="nav-link">
-                                Create Movie
+                            <Link to="/students/create" className="nav-link">
+                                Create Student
                             </Link>
                         </Item>
                     </List>
