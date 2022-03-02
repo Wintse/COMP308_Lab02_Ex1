@@ -77,13 +77,13 @@ function StudentsList(props){
             filterable: true,
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'First Name',
+            accessor: 'firstName',
             filterable: true,
         },
         {
-            Header: 'Rating',
-            accessor: 'rating',
+            Header: 'Student Number',
+            accessor: 'studentNumber',
             filterable: true,
         },
         {

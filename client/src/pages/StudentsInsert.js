@@ -42,23 +42,23 @@ const CancelButton = styled.a.attrs({
 
 
     function StudentsInsert(props) {
-        const [name, setName] = useState('');
-        const [rating, setRating] = useState('');
+        const [firstName, setFirstName] = useState('');
+        const [studentNumber, setStudentNumber] = useState('');
         const [time, setTime] = useState('');
-        const handleChangeInputRating = (event )=> {
+        const handleChangeInputStudentNumber = (event )=> {
             const value = event.target.validity.valid
                 ? event.target.value
-                : rating
+                : studentNumber
     
-            setRating(value);
+            setStudentNumber(value);
         }
         const handleAddStudent = async (event) =>{
             const arrayTime = time.split('/')
-            const payload = { name, rating, time: arrayTime }
+            const payload = { firstName, studentNumber, time: arrayTime }
             await api.insertStudent(payload).then(res => {
                 window.alert(`Student inserted successfully`)
-                setName('');
-                setRating('');
+                setFirstName('');
+                setStudentNumber('');
                 setTime('');
                 window.location.href = `/students/list`;
                 
@@ -72,14 +72,14 @@ const CancelButton = styled.a.attrs({
             <Wrapper>
                 <Title>Create Student</Title>
 
-                <Label>Name: </Label>
+                <Label>First Name: </Label>
                 <InputText
                     type="text"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
                 />
 
-                <Label>Rating: </Label>
+                <Label>Student Number: </Label>
                 <InputText
                     type="number"
                     step="0.1"
@@ -87,8 +87,8 @@ const CancelButton = styled.a.attrs({
                     min="0"
                     max="10"
                     pattern="[0-9]+([,\.][0-9]+)?"
-                    value={rating}
-                    onChange={handleChangeInputRating}
+                    value={studentNumber}
+                    onChange={handleChangeInputStudentNumber}
                 />
 
                 <Label>Time: </Label>
