@@ -127,11 +127,18 @@ function StudentsUpdate(props) {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <Label>Address: </Label>
+            <Label>Address: </Label>
                 <InputText
                     type="text"
                     value={address}
                     onChange={e => setAddress(e.target.value)}
+            />
+
+            <Label>City: </Label>
+                <InputText
+                    type="text"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
                 />
 
             <Label>Phone Number: </Label>
