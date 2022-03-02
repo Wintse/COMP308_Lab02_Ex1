@@ -10,6 +10,9 @@ const Student = new Schema(
         city: { type: String, required: true},
         time: { type: [String], required: true },
         studentNumber: { type: Number, required: false },
+        phoneNumber: { type: String, required: true },
+        email: { type: String, required: true },
+        program: { type: String, required: true }
     },
     { timestamps: true },
 )

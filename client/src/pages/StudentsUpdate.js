@@ -42,6 +42,9 @@ function StudentsUpdate(props) {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [studentNumber, setStudentNumber] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [program, setProgram] = useState('');
     const [time, setTime] = useState('');
     useEffect(()=>{
         const fetchData = async () => {
@@ -52,6 +55,9 @@ function StudentsUpdate(props) {
         setAddress(student.data.data.address);
         setCity(student.data.data.city);
         setStudentNumber(student.data.data.studentNumber);
+        setPhoneNumber(student.data.data.phoneNumber);
+        setEmail(student.data.data.email);
+        setProgram(student.data.data.program);
         setTime(student.data.data.time.join('/'));
         };
        fetchData(); 
@@ -65,7 +71,7 @@ function StudentsUpdate(props) {
     }
     const handleUpdateStudent = async (event) =>{
         const arrayTime = time.split('/')
-        const payload = { firstName, lastName, password, address, city, studentNumber, time: arrayTime }
+        const payload = { firstName, lastName, password, address, city, phoneNumber, email, program, studentNumber, time: arrayTime }
         await api.updateStudentById(id, payload).then(res => {
             window.alert(`Student updated successfully`)
             setFirstName('');
@@ -74,6 +80,9 @@ function StudentsUpdate(props) {
             setAddress('');
             setCity('');
             setStudentNumber('');
+            setPhoneNumber('');
+            setEmail('');
+            setProgram('');
             setTime('');
             window.location.href = `/students/list`;
             
@@ -125,13 +134,27 @@ function StudentsUpdate(props) {
                     onChange={e => setAddress(e.target.value)}
                 />
 
-                <Label>City: </Label>
-                <InputText
-                    type="text"
-                    value={city}
-                    onChange={e => setCity(e.target.value)}
-                />
-           
+            <Label>Phone Number: </Label>
+            <InputText
+                type="text"
+                value={phoneNumber}
+                onChange={e => setPhoneNumber(e.target.value)}
+            />
+
+            <Label>Email: </Label>
+            <InputText
+                type="text"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+            />
+
+            <Label>Program: </Label>
+            <InputText
+                type="text"
+                value={program}
+                onChange={e => setProgram(e.target.value)}
+            />
+
 
             <Label>Time: </Label>
             <InputText

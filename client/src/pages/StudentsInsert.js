@@ -48,6 +48,9 @@ const CancelButton = styled.a.attrs({
         const [address, setAddress] = useState('');
         const [city, setCity] = useState('');
         const [studentNumber, setStudentNumber] = useState('');
+        const [phoneNumber, setPhoneNumber] = useState(''); 
+        const [email, setEmail] = useState(''); 
+        const [program, setProgram] = useState(''); 
         const [time, setTime] = useState('');
         const handleChangeInputStudentNumber = (event )=> {
             const value = event.target.validity.valid
@@ -58,7 +61,7 @@ const CancelButton = styled.a.attrs({
         }
         const handleAddStudent = async (event) =>{
             const arrayTime = time.split('/')
-            const payload = { firstName, lastName, password, address, city, studentNumber, time: arrayTime }
+            const payload = { firstName, lastName, password, address, city, phoneNumber, email, program, studentNumber, time: arrayTime }
             await api.insertStudent(payload).then(res => {
                 window.alert(`Student inserted successfully`)
                 setFirstName('');
@@ -67,6 +70,9 @@ const CancelButton = styled.a.attrs({
                 setAddress('');
                 setCity('');
                 setStudentNumber('');
+                setPhoneNumber('');
+                setEmail('');
+                setProgram('');
                 setTime('');
                 window.location.href = `/students/list`;
                 
@@ -113,18 +119,25 @@ const CancelButton = styled.a.attrs({
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <Label>Address: </Label>
+                <Label>Phone Number: </Label>
                 <InputText
                     type="text"
-                    value={address}
-                    onChange={e => setAddress(e.target.value)}
+                    value={phoneNumber}
+                    onChange={e => setPhoneNumber(e.target.value)}
                 />
 
-                <Label>City: </Label>
+                <Label>Email: </Label>
                 <InputText
                     type="text"
-                    value={city}
-                    onChange={e => setCity(e.target.value)}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+
+                <Label>Program: </Label>
+                <InputText
+                    type="text"
+                    value={program}
+                    onChange={e => setProgram(e.target.value)}
                 />
 
                 <Label>Time: </Label>

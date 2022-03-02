@@ -57,6 +57,9 @@ updateStudent = async (req, res) => {
         student.city = body.city
         student.time = body.time
         student.studentNumber = body.studentNumber
+        student.phoneNumber = body.phoneNumber
+        student.email = body.email
+        student.program = body.program
         student
             .save()
             .then(() => {

@@ -98,6 +98,21 @@ function StudentsList(props){
             filterable: true,
         },
         {
+            Header: 'Phone Number',
+            accessor: 'phoneNumber',
+            filterable: true,
+        },
+        {
+            Header: 'Email',
+            accessor: 'email',
+            filterable: true,
+        },
+        {
+            Header: 'Program',
+            accessor: 'program',
+            filterable: true,
+        },
+        {
             Header: 'Time',
             accessor: 'time',
             Cell: props => <span>{props.value.join(' / ')}</span>,
