@@ -50,9 +50,9 @@ updateStudent = async (req, res) => {
                 message: 'Student not found!',
             })
         }
-        student.name = body.name
+        student.firstName = body.firstName
         student.time = body.time
-        student.rating = body.rating
+        student.studentNumber = body.studentNumber
         student
             .save()
             .then(() => {
