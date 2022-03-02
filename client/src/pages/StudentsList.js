@@ -19,35 +19,35 @@ const Delete = styled.div`
     color: #ff0000;
     cursor: pointer;
 `
-function UpdateMovie(props) {
+function UpdateStudent(props) {
    const updateUser = (event) => {
         event.preventDefault()
       
-        window.location.href = `/movies/update/${props.id}`
+        window.location.href = `/students/update/${props.id}`
     }
     return (<Update onClick={updateUser}>Update</Update>);
 
 
 }
 
-function DeleteMovie(props) {
+function DeleteStudent(props) {
 const    deleteUser = (event) => {
         event.preventDefault()
 
         if (
             window.confirm(
-                `Do tou want to delete the movie ${props.id} permanently?`,
+                `Do tou want to delete the student ${props.id} permanently?`,
             )
         ) {
-            api.deleteMovieById(props.id)
+            api.deleteStudentById(props.id)
             window.location.reload()
         }
     }
     return (<Delete onClick={deleteUser}>Delete</Delete>);
 }
 
-function MoviesList(props){
-    const [movies, setMovies] = useState([]);
+function StudentsList(props){
+    const [students, setStudents] = useState([]);
   
     const [isLoading, setLoading] = useState(false);
 
@@ -58,8 +58,8 @@ function MoviesList(props){
 
         setLoading(true);
 
-        await api.getAllMovies().then(result => {
-            setMovies(result.data.data);
+        await api.getAllStudents().then(result => {
+            setStudents(result.data.data);
             setLoading(false);
 
         }).catch((error) => {
@@ -97,7 +97,7 @@ function MoviesList(props){
             Cell: function(props) {
                 return (
                     <span>
-                        <DeleteMovie id={props.original._id} />
+                        <DeleteStudent id={props.original._id} />
                     </span>
                 )
             },
@@ -108,7 +108,7 @@ function MoviesList(props){
             Cell: function(props) {
                 return (
                     <span>
-                        <UpdateMovie id={props.original._id} />
+                        <UpdateStudent id={props.original._id} />
                     </span>
                 )
             },
@@ -117,7 +117,7 @@ function MoviesList(props){
 
 
     let showTable = true
-    if (!movies.length) {
+    if (!students.length) {
         showTable = false
     }
 
@@ -125,7 +125,7 @@ function MoviesList(props){
         <Wrapper>
         {showTable && (
             <ReactTable
-                data={movies}
+                data={students}
                 columns={columns}
                 loading={isLoading}
                 defaultPageSize={10}
@@ -138,4 +138,4 @@ function MoviesList(props){
 }
 
 
-export default MoviesList
+export default StudentsList

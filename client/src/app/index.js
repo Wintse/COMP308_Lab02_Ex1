@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { NavBar } from '../components'
-import { MoviesList, MoviesInsert, MoviesUpdate } from '../pages'
+import { StudentsList, StudentsInsert, StudentsUpdate } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -11,12 +11,12 @@ function App() {
         <Router>
             <NavBar />
             <Switch>
-                <Route path="/movies/list" exact component={MoviesList} />
-                <Route path="/movies/create" exact component={MoviesInsert} />
+                <Route path="/students/list" exact component={StudentsList} />
+                <Route path="/students/create" exact component={StudentsInsert} />
                 <Route
-                    path="/movies/update/:id"
+                    path="/students/update/:id"
                     exact
-                    component={MoviesUpdate}
+                    component={StudentsUpdate}
                 />
             </Switch>
         </Router>

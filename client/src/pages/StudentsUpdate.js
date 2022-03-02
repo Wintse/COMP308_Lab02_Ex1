@@ -34,17 +34,17 @@ const CancelButton = styled.a.attrs({
 })`
     margin: 15px 15px 15px 5px;
 `
-function MoviesUpdate(props) {
+function StudentsUpdate(props) {
     const [id, setId] = useState(props.match.params.id);
     const [name, setName] = useState('');
     const [rating, setRating] = useState('');
     const [time, setTime] = useState('');
     useEffect(()=>{
         const fetchData = async () => {
-        const movie = await api.getMovieById(id)
-        setName(movie.data.data.name);
-        setRating(movie.data.data.rating);
-        setTime(movie.data.data.time.join('/'));
+        const student = await api.getStudentById(id)
+        setName(student.data.data.name);
+        setRating(student.data.data.rating);
+        setTime(student.data.data.time.join('/'));
         };
        fetchData(); 
     },[id]);
@@ -55,15 +55,15 @@ function MoviesUpdate(props) {
 
         setRating(value);
     }
-    const handleUpdateMovie = async (event) =>{
+    const handleUpdateStudent = async (event) =>{
         const arrayTime = time.split('/')
         const payload = { name, rating, time: arrayTime }
-        await api.updateMovieById(id, payload).then(res => {
-            window.alert(`Movie updated successfully`)
+        await api.updateStudentById(id, payload).then(res => {
+            window.alert(`Student updated successfully`)
             setName('');
             setRating('');
             setTime('');
-            window.location.href = `/movies/list`;
+            window.location.href = `/students/list`;
             
         })
 
@@ -72,7 +72,7 @@ function MoviesUpdate(props) {
 
     return (
         <Wrapper>
-            <Title>Create Movie</Title>
+            <Title>Create Student</Title>
 
             <Label>Name: </Label>
             <InputText
@@ -100,11 +100,11 @@ function MoviesUpdate(props) {
                 onChange={e => setTime(e.target.value)}
             />
 
-            <Button onClick={handleUpdateMovie}>Update Movie</Button>
-            <CancelButton href={'/movies/list'}>Cancel</CancelButton>
+            <Button onClick={handleUpdateStudent}>Update Student</Button>
+            <CancelButton href={'/students/list'}>Cancel</CancelButton>
         </Wrapper>
     );  
 }
 
 
-export default MoviesUpdate
+export default StudentsUpdate

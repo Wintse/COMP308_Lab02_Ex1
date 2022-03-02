@@ -41,7 +41,7 @@ const CancelButton = styled.a.attrs({
     `
 
 
-    function MoviesInsert(props) {
+    function StudentsInsert(props) {
         const [name, setName] = useState('');
         const [rating, setRating] = useState('');
         const [time, setTime] = useState('');
@@ -52,15 +52,15 @@ const CancelButton = styled.a.attrs({
     
             setRating(value);
         }
-        const handleAddMovie = async (event) =>{
+        const handleAddStudent = async (event) =>{
             const arrayTime = time.split('/')
             const payload = { name, rating, time: arrayTime }
-            await api.insertMovie(payload).then(res => {
-                window.alert(`Movie inserted successfully`)
+            await api.insertStudent(payload).then(res => {
+                window.alert(`Student inserted successfully`)
                 setName('');
                 setRating('');
                 setTime('');
-                window.location.href = `/movies/list`;
+                window.location.href = `/students/list`;
                 
             })
 
@@ -70,7 +70,7 @@ const CancelButton = styled.a.attrs({
             
         return (
             <Wrapper>
-                <Title>Create Movie</Title>
+                <Title>Create Student</Title>
 
                 <Label>Name: </Label>
                 <InputText
@@ -98,10 +98,10 @@ const CancelButton = styled.a.attrs({
                     onChange={e => setTime(e.target.value)}
                 />
 
-                <Button onClick={handleAddMovie}>Add Movie</Button>
-                <CancelButton href={'/movies/list'}>Cancel</CancelButton>
+                <Button onClick={handleAddStudent}>Add Student</Button>
+                <CancelButton href={'/students/list'}>Cancel</CancelButton>
             </Wrapper>
         );
         }
 
-export default MoviesInsert
+export default StudentsInsert
