@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const Movie = new Schema(
+const Student = new Schema(
     {
         name: { type: String, required: true },
         time: { type: [String], required: true },
@@ -10,4 +10,4 @@ const Movie = new Schema(
     { timestamps: true },
 )
 
-module.exports = mongoose.model('movies', Movie)
+module.exports = mongoose.model('students', Student)
