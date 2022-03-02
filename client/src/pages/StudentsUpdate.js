@@ -37,12 +37,14 @@ const CancelButton = styled.a.attrs({
 function StudentsUpdate(props) {
     const [id, setId] = useState(props.match.params.id);
     const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [studentNumber, setStudentNumber] = useState('');
     const [time, setTime] = useState('');
     useEffect(()=>{
         const fetchData = async () => {
         const student = await api.getStudentById(id)
         setFirstName(student.data.data.firstName);
+        setLastName(student.data.data.lastName);
         setStudentNumber(student.data.data.studentNumber);
         setTime(student.data.data.time.join('/'));
         };
@@ -57,10 +59,11 @@ function StudentsUpdate(props) {
     }
     const handleUpdateStudent = async (event) =>{
         const arrayTime = time.split('/')
-        const payload = { firstName, studentNumber, time: arrayTime }
+        const payload = { firstName, lastName, studentNumber, time: arrayTime }
         await api.updateStudentById(id, payload).then(res => {
             window.alert(`Student updated successfully`)
             setFirstName('');
+            setLastName('');
             setStudentNumber('');
             setTime('');
             window.location.href = `/students/list`;
@@ -79,6 +82,13 @@ function StudentsUpdate(props) {
                 type="text"
                 value={firstName}
                 onChange={e => setFirstName(e.target.value)}
+            />
+
+            <Label>Last Name: </Label>
+            <InputText
+                type="text"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
             />
 
             <Label>Student Number: </Label>
