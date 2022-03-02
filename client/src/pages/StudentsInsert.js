@@ -43,6 +43,7 @@ const CancelButton = styled.a.attrs({
 
     function StudentsInsert(props) {
         const [firstName, setFirstName] = useState('');
+        const [lastName, setLastName] = useState(''); 
         const [studentNumber, setStudentNumber] = useState('');
         const [time, setTime] = useState('');
         const handleChangeInputStudentNumber = (event )=> {
@@ -54,10 +55,11 @@ const CancelButton = styled.a.attrs({
         }
         const handleAddStudent = async (event) =>{
             const arrayTime = time.split('/')
-            const payload = { firstName, studentNumber, time: arrayTime }
+            const payload = { firstName, lastName, studentNumber, time: arrayTime }
             await api.insertStudent(payload).then(res => {
                 window.alert(`Student inserted successfully`)
                 setFirstName('');
+                setLastName('');
                 setStudentNumber('');
                 setTime('');
                 window.location.href = `/students/list`;
@@ -77,6 +79,13 @@ const CancelButton = styled.a.attrs({
                     type="text"
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
+                />
+
+                <Label>Last Name: </Label>
+                <InputText
+                    type="text"
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
                 />
 
                 <Label>Student Number: </Label>
