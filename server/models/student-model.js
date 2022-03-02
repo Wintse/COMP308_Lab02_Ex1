@@ -5,6 +5,9 @@ const Student = new Schema(
     {
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
+        password: { type: String, required: true},
+        address: { type: String, required: true},
+        city: { type: String, required: true},
         time: { type: [String], required: true },
         studentNumber: { type: Number, required: false },
     },

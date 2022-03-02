@@ -52,6 +52,9 @@ updateStudent = async (req, res) => {
         }
         student.firstName = body.firstName
         student.lastName = body.lastName
+        student.password = body.password
+        student.address = body.address
+        student.city = body.city
         student.time = body.time
         student.studentNumber = body.studentNumber
         student

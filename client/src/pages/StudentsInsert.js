@@ -43,7 +43,10 @@ const CancelButton = styled.a.attrs({
 
     function StudentsInsert(props) {
         const [firstName, setFirstName] = useState('');
-        const [lastName, setLastName] = useState(''); 
+        const [lastName, setLastName] = useState('');
+        const [password, setPassword] = useState('');
+        const [address, setAddress] = useState('');
+        const [city, setCity] = useState('');
         const [studentNumber, setStudentNumber] = useState('');
         const [time, setTime] = useState('');
         const handleChangeInputStudentNumber = (event )=> {
@@ -55,11 +58,14 @@ const CancelButton = styled.a.attrs({
         }
         const handleAddStudent = async (event) =>{
             const arrayTime = time.split('/')
-            const payload = { firstName, lastName, studentNumber, time: arrayTime }
+            const payload = { firstName, lastName, password, address, city, studentNumber, time: arrayTime }
             await api.insertStudent(payload).then(res => {
                 window.alert(`Student inserted successfully`)
                 setFirstName('');
                 setLastName('');
+                setPassword('');
+                setAddress('');
+                setCity('');
                 setStudentNumber('');
                 setTime('');
                 window.location.href = `/students/list`;
@@ -73,6 +79,18 @@ const CancelButton = styled.a.attrs({
         return (
             <Wrapper>
                 <Title>Create Student</Title>
+                
+                <Label>Student Number: </Label>
+                <InputText
+                    type="number"
+                    step="0.1"
+                    lang="en-US"
+                    min="0"
+                    max="10"
+                    pattern="[0-9]+([,\.][0-9]+)?"
+                    value={studentNumber}
+                    onChange={handleChangeInputStudentNumber}
+                />
 
                 <Label>First Name: </Label>
                 <InputText
@@ -88,16 +106,25 @@ const CancelButton = styled.a.attrs({
                     onChange={e => setLastName(e.target.value)}
                 />
 
-                <Label>Student Number: </Label>
+                <Label>Password: </Label>
                 <InputText
-                    type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={studentNumber}
-                    onChange={handleChangeInputStudentNumber}
+                    type="text"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+
+                <Label>Address: </Label>
+                <InputText
+                    type="text"
+                    value={address}
+                    onChange={e => setAddress(e.target.value)}
+                />
+
+                <Label>City: </Label>
+                <InputText
+                    type="text"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
                 />
 
                 <Label>Time: </Label>

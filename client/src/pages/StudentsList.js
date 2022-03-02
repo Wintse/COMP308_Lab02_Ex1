@@ -72,8 +72,8 @@ function StudentsList(props){
 
     const columns = [
         {
-            Header: 'ID',
-            accessor: '_id',
+            Header: 'Student Number',
+            accessor: 'studentNumber',
             filterable: true,
         },
         {
@@ -86,9 +86,15 @@ function StudentsList(props){
             accessor: 'lastName',
             filterable: true,
         },
+
         {
-            Header: 'Student Number',
-            accessor: 'studentNumber',
+            Header: 'Address',
+            accessor: 'address',
+            filterable: true,
+        },
+        {
+            Header: 'City',
+            accessor: 'city',
             filterable: true,
         },
         {
