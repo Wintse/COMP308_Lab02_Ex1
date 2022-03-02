@@ -3,9 +3,9 @@ const Schema = mongoose.Schema
 
 const Student = new Schema(
     {
-        name: { type: String, required: true },
+        firstName: { type: String, required: true },
         time: { type: [String], required: true },
-        rating: { type: Number, required: false },
+        studentNumber: { type: Number, required: false },
     },
     { timestamps: true },
 )
