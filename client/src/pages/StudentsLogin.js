@@ -9,14 +9,14 @@ import axios from 'axios';
 import View from './View'
 import StudentList from './StudentsList'
 //
-function Login() {
+function StudentsLogin() {
   //state variable for the screen
   const [screen, setScreen] = useState('auth');
   //state variables to store input field data, user name and password
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [showLoading, setShowLoading] = useState(false);
-  const apiUrl = "/students/login";
+  const apiUrl = "/signin";
   // send username and password to the server
   // for initial authentication
   const authenticateUser = async () => {
@@ -87,5 +87,5 @@ function Login() {
   );
 }
 
-export default Login;
+export default StudentsLogin;
 

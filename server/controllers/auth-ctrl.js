@@ -14,10 +14,10 @@ exports.render = function (req, res) {
 // Load the module dependencies
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require('../../config/config');
+const config = require('../config/config');
 const jwtExpirySeconds = 300;
 const jwtKey =config.secretKey;
-const Auth = require('mongoose').model('auth-ctrl');
+
 //
 // Create a new error handling controller method
 const getErrorMessage = function(err) {
@@ -49,6 +49,7 @@ return message;
 //
 // authenticates a user
 exports.authenticate = function(req, res, next) {
+console.log("authenticate exports")
 // Get credentials from request
 console.log(req.body)
 const username = req.body.auth.username;
@@ -89,6 +90,7 @@ return res.status('200').json({message: "signed out"})
 }
 //check if the user is signed in
 exports.isSignedIn = (req, res) => {
+  console.log("auth-ctrl isSignedIn")
 // Obtain the session token from the requests cookies,
 // which come with every request
 const token = req.cookies.token
