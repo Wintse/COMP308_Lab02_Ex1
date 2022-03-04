@@ -31,6 +31,11 @@ function Links(props){
                                 Create Student
                             </Link>
                         </Item>
+                        <Item>
+                            <Link to="/students/login" className="nav-link">
+                                Login 
+                            </Link>
+                        </Item>
                     </List>
                 </Collapse>
             </React.Fragment>

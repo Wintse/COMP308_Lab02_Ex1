@@ -118,10 +118,11 @@ getStudents = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+
 module.exports = {
     createStudent,
     updateStudent,
     deleteStudent,
     getStudents,
-    getStudentById,
+    getStudentById
 }
