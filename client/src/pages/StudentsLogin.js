@@ -67,21 +67,21 @@ function Login() {
   return (
     <div className="App">
       {screen === 'auth' 
-        ? <div class ="container">
-            <div class="container">
+        ? <div className ="container">
+            <div className="container">
               <label>Username: </label>
-              <input type="text" class = "fields" onChange={e => setUsername(e.target.value)} />
+              <input type="text" className = "fields" onChange={e => setUsername(e.target.value)} />
             </div>
-            <div class="container">
+            <div className="container">
               <label>Password: </label>
-              <input type="password" class = "fields"  onChange={e => setPassword(e.target.value)} />
+              <input type="password" className = "fields"  onChange={e => setPassword(e.target.value)} />
             </div>
-            <div class="container">
-              <button class="form-field-no-caption" onClick={authenticateUser}>Login</button>
+            <div className="container">
+              <button className="form-field-no-caption" onClick={authenticateUser}>Login</button>
             </div>
 
         </div>        
-        : <View screen={screen} setScreen={setScreen} />
+        : <StudentList screen={screen} setScreen={setScreen} />
       }
     </div>
   );
